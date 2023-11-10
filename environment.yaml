@@ -1,0 +1,18 @@
+name: temporal_model_env
+channels:
+  - defaults
+  - pytorch
+dependencies:
+  - python=3.8  # Specify your Python version here, compatible with your PyTorch version
+  - pip
+  - pytest
+  - pytorch
+  - torchvision
+  - cudatoolkit=10.2  # Choose the version that matches your CUDA installation if you want GPU support
+  - numpy
+  - matplotlib  # Optional, if you want to plot things
+  - ipython  # Optional, for an enhanced interactive console
+  - jupyter  # Optional, if you want to use Jupyter notebooks
+  - pip:
+    - torchinfo  # Optional, for detailed information about the model
+

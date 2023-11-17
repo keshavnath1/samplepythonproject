@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cucumber Report</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        h1, h2 { color: #333; }
+        .summary { background-color: #f2f2f2; padding: 10px; }
+        .test { margin-bottom: 20px; }
+        .test-header { background-color: #e9e9e9; padding: 5px; }
+        .test-body { background-color: #f9f9f9; padding: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Cucumber Test Report</h1>
+    <div class="summary">
+        <p><strong>Created:</strong> {{ report.created }}</p>
+        <p><strong>Duration:</strong> {{ report.duration }}</p>
+        <p><strong>Exit Code:</strong> {{ report.exitcode }}</p>
+        <p><strong>Environment:</strong> {{ report.environment }}</p>
+        <p><strong>Summary:</strong> {{ report.summary }}</p>
+    </div>
+    <h2>Test Details</h2>
+    {% for test in report.tests %}
+        <div class="test">
+            <div class="test-header">{{ test.name }}</div>
+            <div class="test-body">
+                <p><strong>Status:</strong> {{ test.outcome }}</p>
+                <p><strong>Duration:</strong> {{ test.duration }}</p>
+                <!-- Add more details as needed -->
+            </div>
+        </div>
+    {% endfor %}
+</body>
+</html>

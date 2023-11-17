@@ -13,7 +13,22 @@
 import torch
 import torch.nn as nn
 
+import time
+import functools
+
+def timer_decorator(method):
+    @functools.wraps(method)
+    def timed(*args, **kwargs):
+        start_time = time.time()
+        result = method(*args, **kwargs)
+        end_time = time.time()
+        print(f"{method.__name__} executed in {end_time - start_time} seconds")
+        return result
+    return timed
+
+
 class TemporalModel(nn.Module):
+    @timer_decorator
     def __init__(self, input_size, hidden_size, num_layers, output_size):
         super(TemporalModel, self).__init__()
         self.hidden_size = hidden_size
@@ -51,12 +66,21 @@ print(output)
 
 # In[4]:
 
+try:
+    get_ipython = get_ipython
+except NameError:
+    # Define an alternative for get_ipython() or skip its usage
+    get_ipython = None
+if get_ipython is not None:
+    # IPython-specific code here
+    get_ipython().system('pytest test_temporal_model.py -s')
+    pytest
+    # In[ ]:
 
-get_ipython().system('pytest test_temporal_model.py -s')
 
 
-pytest
-# In[ ]:
+
+
 
 
 

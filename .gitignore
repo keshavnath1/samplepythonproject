@@ -35,6 +35,7 @@ MANIFEST
 # Installer logs
 pip-log.txt
 pip-delete-this-directory.txt
+cucumber_report.html
 
 # Unit test / coverage reports
 .idea/
